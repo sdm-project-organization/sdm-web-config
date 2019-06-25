@@ -1,0 +1,39 @@
+example.property: "I AM IN THE DEFAULT"
+
+# [JPA-BEFORE]
+#spring.jpa.database: "POSTGRESQL"
+#spring.jpa.show-sql: "true"
+#spring.jpa.properties.hibernate.dialect: "org.hibernate.dialect.PostgreSQLDialect"
+# [DATASOURCE-BEFORE]
+#spring.datasource.platform:  "postgres"
+#spring.database.driverClassName: "org.postgresql.Driver"
+#spring.datasource.url: "jdbc:postgresql://database:5432/eagle_eye_local"
+#spring.datasource.username: "root"
+#spring.datasource.password: "root"
+#spring.datasource.testWhileIdle: "true"
+#spring.datasource.validationQuery: "SELECT 1"
+spring:
+  # [DATASOURCE-AFTER]
+  datasource:
+    url: jdbc:mysql://13.125.130.224:10001/LICENSING?verifyServerCertificate=false&useSSL=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # [JPA-AFTER]
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+
+# [REDIS]
+redis:
+  server: "redis"
+  port: "6379"
+
+# [SIGNING]
+signing:
+  key: "345345fsdfsf5345"
+
