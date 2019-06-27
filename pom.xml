@@ -32,11 +32,11 @@
     <dependencies>
 
         <!-- Spring Boot : tomcat -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <!--<scope>provided</scope>-->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
+        <!--</dependency>-->
 
         <!-- Spring Cloud : Config Server -->
         <dependency>
