@@ -3,12 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.thoughtmechanix</groupId>
-    <artifactId>configurationserver</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.mo</groupId>
+    <artifactId>config</artifactId>
+    <name>config</name>
     <packaging>war</packaging>
-
-    <name>Config Server</name>
+    <version>0.0.1-SNAPSHOT</version>
     <description>Config Server demo project</description>
 
     <parent>
@@ -31,12 +30,11 @@
 
     <dependencies>
 
-        <!-- Spring Boot : tomcat -->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
-        <!--</dependency>-->
+        <!-- Spring Cloud : Starter Config -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
 
         <!-- Spring Cloud : Config Server -->
         <dependency>
@@ -44,10 +42,10 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
-        <!-- Spring Cloud : Starter Config -->
+        <!-- Spring Cloud : Discovery Client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
     </dependencies>
@@ -55,7 +53,7 @@
     <!--Docker build Config-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>com.thoughtmechanix.confsvr.ConfigServerApplication</start-class>
+        <start-class>com.mo.config.ConfigApplication</start-class>
         <java.version>1.8</java.version>
         <docker.image.name>johncarnell/tmx-confsvr</docker.image.name>
         <docker.image.tag>chapter3</docker.image.tag>

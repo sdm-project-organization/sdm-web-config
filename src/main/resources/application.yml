@@ -23,13 +23,11 @@
 #          username: native-cloud-apps
 #          password: 0ffended
 
-
 ####
 #Classpath and file-based solution
 ####
 
-server:
-  port: 8888
+# ========================== DEFAULT ==========================
 
 # file
 #spring:
@@ -44,6 +42,7 @@ server:
 
 # git
 spring:
+  profiles: default
   cloud:
     config:
       discovery:
@@ -56,14 +55,56 @@ spring:
           username: native-cloud-apps
           password: 0ffended
 
-# discovery
+server:
+  port: 8888
+
 eureka:
   instance:
-    preferIpAddress: true
+    hostname: localhost
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
 
+---
 
+# ========================== DEV ==========================
+
+# file
+#spring:
+#  # must
+#  profiles:
+#    active: native
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          searchLocations: classpath:config/,classpath:config/licensingservice,classpath:config/organizationservice
+
+# git
+spring:
+  profiles: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      server:
+        encrypt.enabled: false
+        git:
+          uri: https://github.com/klimtever/config-repo/
+          searchPaths: licensingservice,organizationservice,specialroutesservice,zuulservice
+          username: native-cloud-apps
+          password: 0ffended
+
+server:
+  port: 8888
+
+eureka:
+  instance:
+    hostname: dev.avocadostudio.xyz
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
